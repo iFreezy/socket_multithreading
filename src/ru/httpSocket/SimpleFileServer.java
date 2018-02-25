@@ -9,6 +9,7 @@ public class SimpleFileServer {
 
     public static void main(String[] args) throws IOException {
         try (ServerSocket servsock = new ServerSocket(SOCKET_PORT)) {
+            new Controller(servsock);
             while (true) {
                 System.out.println("Waiting...");
                 new Server(servsock.accept());

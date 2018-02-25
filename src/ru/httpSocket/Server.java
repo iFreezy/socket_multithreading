@@ -13,9 +13,10 @@ public class Server extends Thread{
     Server(Socket s) {
         this.socket = s;
 
-        // и запускаем новый вычислительный поток (см. ф-ю run())
+        // запускаем новый поток
         setDaemon(true);
         setPriority(NORM_PRIORITY);
+        setName("Server");
         start();
     }
 
@@ -103,7 +104,6 @@ public class Server extends Thread{
 
             byte[] mybytearray = new byte[(int) sourceDir.length()];
             System.out.println("Sending " + path + "(" + mybytearray.length + " bytes)");
-
 
             // создаём ответ
 
