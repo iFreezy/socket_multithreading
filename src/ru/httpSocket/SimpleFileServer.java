@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class SimpleFileServer {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         new Controller().start();
         System.out.println("Started");
         while (true) {
