@@ -1,18 +1,20 @@
 package ru.httpSocket;
 
 import java.io.*;
-import java.net.ServerSocket;
+import java.util.Scanner;
 
 public class SimpleFileServer {
 
-    public final static int SOCKET_PORT = 13267;
-
     public static void main(String[] args) throws IOException {
-        try (ServerSocket servsock = new ServerSocket(SOCKET_PORT)) {
-            new Controller(servsock);
-            while (true) {
-                System.out.println("Waiting...");
-                new Server(servsock.accept());
+        new Controller().start();
+        System.out.println("Started");
+        while (true) {
+            Scanner in = new Scanner(System.in);
+            String text = in.next();
+            System.out.println("echo: " + text);
+            if (text.equals("stop")) {
+                Thread.currentThread().interrupt();
+                System.exit(0);
             }
         }
     }
